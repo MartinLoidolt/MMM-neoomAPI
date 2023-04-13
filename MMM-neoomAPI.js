@@ -24,7 +24,7 @@ Module.register("MMM-JokeAPI", {
 
         if(this.errorText !== null) {
             const error = document.createElement("h1");
-            error.className = "error";
+            error.className = "bright medium light fadeInJoke";
             error.innerHTML = this.errorText;
             wrapper.appendChild(error)
 
