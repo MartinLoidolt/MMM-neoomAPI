@@ -52,7 +52,7 @@ Module.register("MMM-neoomAPI", {
 
         fetch(`https://api.ntuity.io/v1/sites/${this.config.siteId}/energy-flow/latest/`, {
             method: 'GET',
-            mode: 'no-cors',
+            mode: 'same-origin',
             headers: {accept: 'application/json', authorization: `Bearer ${this.config.apiKey}`},
         }).then(response => {
             this.errorText = response.status;
