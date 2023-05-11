@@ -52,8 +52,8 @@ Module.register("MMM-neoomAPI", {
 
         fetch(`https://api.ntuity.io/v1/sites/${this.config.siteId}/energy-flow/latest/`).then((response) => {
 		    this.errorText = 'afterfetch';
-        }).catch(reason => {
-            this.errorText = "nix after fetch but in error dings";
+        }).catch(error => {
+            this.errorText = error;
         });
 
         this.updateDom();
