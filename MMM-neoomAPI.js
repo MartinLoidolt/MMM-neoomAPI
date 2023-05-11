@@ -50,7 +50,7 @@ Module.register("MMM-neoomAPI", {
     },
     getStats() {
 
-        fetch(`https://api.ntuity.io/v1/sites/${this.config.siteId}/energy-flow/latest/`, {
+        fetch(`http://api.ntuity.io/v1/sites/${this.config.siteId}/energy-flow/latest/`, {
             method: 'GET',
             mode: 'same-origin',
             headers: {accept: 'application/json', authorization: `Bearer ${this.config.apiKey}`},
