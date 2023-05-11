@@ -11,7 +11,7 @@ Module.register("MMM-neoomAPI", {
         ]
     },
     stats: null,
-    errorText: "HIFISCH",
+    errorText: "HIFISCHHI",
     notificationReceived(notification, payload, sender) {
         if (notification === 'MODULE_DOM_CREATED') {
             this.getStats();
