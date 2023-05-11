@@ -51,7 +51,7 @@ Module.register("MMM-neoomAPI", {
     getStats() {
 
         fetch(`https://api.ntuity.io/v1/sites/${this.config.siteId}/energy-flow/latest/`, {mode: 'no-cors'}).then((response) => {
-		    this.errorText = JSON.stringify(response.json());
+		    this.errorText = response.statusText;
         }).catch(error => {
             this.errorText = error;
         });
