@@ -52,11 +52,9 @@ Module.register("MMM-neoomAPI", {
     async getStats() {
 
         fetch(`https://api.ntuity.io/v1/sites/${this.config.siteId}/energy-flow/latest/`).then((response) => {
-
-		this.errorText = 'afterfetch';
-		this.updateDom();
-
-            
+		    this.errorText = 'afterfetch';
         });
+
+        this.updateDom();
     }
 });
