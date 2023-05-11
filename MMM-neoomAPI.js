@@ -16,14 +16,13 @@ Module.register("MMM-neoomAPI", {
         if (notification === 'MODULE_DOM_CREATED') {
             this.getStats();
             setInterval(() => {
+                this.errorText = "FISCHENDERFRISCHER";
                 this.getStats();
             }, this.config.fetchInterval);
         }
     },
     getDom() {
         const wrapper = document.createElement("div");
-
-        this.notificationReceived();
 
         if(this.errorText !== null) {
             const error = document.createElement("h1");
