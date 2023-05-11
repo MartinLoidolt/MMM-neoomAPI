@@ -16,7 +16,6 @@ Module.register("MMM-neoomAPI", {
         if (notification === 'MODULE_DOM_CREATED') {
             this.getStats();
             setInterval(() => {
-                this.errorText = "FISCHENDERFRISCHER";
                 this.getStats();
             }, this.config.fetchInterval);
         }
@@ -49,10 +48,12 @@ Module.register("MMM-neoomAPI", {
         headerText.innerHTML = `Power Production: ${this.stats.power_production.value} Wh`;
         wrapper.appendChild(statsText);
     },
-    async getStats() {
+    getStats() {
 
         fetch(`https://api.ntuity.io/v1/sites/${this.config.siteId}/energy-flow/latest/`).then((response) => {
 		    this.errorText = 'afterfetch';
+        }).catch(reason => {
+            this.errorText = "nix after fetch but in error dings";
         });
 
         this.updateDom();
