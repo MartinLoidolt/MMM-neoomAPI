@@ -23,6 +23,8 @@ Module.register("MMM-neoomAPI", {
     getDom() {
         const wrapper = document.createElement("div");
 
+        this.notificationReceived();
+
         if(this.errorText !== null) {
             const error = document.createElement("h1");
             error.className = "bright medium light fadeInJoke";
