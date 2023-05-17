@@ -53,7 +53,7 @@ Module.register("MMM-neoomAPI", {
         wrapper.appendChild(powerConsumptionText);
 
         const storageStateText = document.createElement("h2");
-        storageStateText.innerHTML = `Storage charge: ${this.stats.state_of_charge.value / 1000} %`;
+        storageStateText.innerHTML = `Storage charge: ${this.stats.state_of_charge.value} %`;
         wrapper.appendChild(storageStateText);
     },
     getStats() {
