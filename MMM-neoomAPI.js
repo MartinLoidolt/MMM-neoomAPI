@@ -11,7 +11,7 @@ Module.register("MMM-neoomAPI", {
         ]
     },
     stats: null,
-    errorText: "HIFISCHHI",
+    errorText: null,
     notificationReceived(notification, payload, sender) {
         if (notification === 'MODULE_DOM_CREATED') {
             this.getStats();
@@ -44,9 +44,17 @@ Module.register("MMM-neoomAPI", {
         headerText.innerHTML = "neoom Stats";
         wrapper.appendChild(headerText);
 
-        const statsText = document.createElement("h2");
-        headerText.innerHTML = `Power Production: ${this.stats.power_production.value} Wh`;
-        wrapper.appendChild(statsText);
+        const powerProductionText = document.createElement("h2");
+        powerProductionText.innerHTML = `Power Production: ${this.stats.power_production.value / 1000} kW`;
+        wrapper.appendChild(powerProductionText);
+
+        const powerConsumptionText = document.createElement("h2");
+        powerConsumptionText.innerHTML = `Power Consumption: ${this.stats.power_consumption_calc.value / 1000} kW`;
+        wrapper.appendChild(powerConsumptionText);
+
+        const storageStateText = document.createElement("h2");
+        storageStateText.innerHTML = `Storage charge: ${this.stats.state_of_charge.value / 1000} %`;
+        wrapper.appendChild(storageStateText);
     },
     getStats() {
 
@@ -56,7 +64,7 @@ Module.register("MMM-neoomAPI", {
         }).then(response => {
             return response.json();
         }).then(data => {
-            this.errorText = data.power_production.value;
+            this.stats = data;
         })
             .catch(error => {
             this.errorText = error;
