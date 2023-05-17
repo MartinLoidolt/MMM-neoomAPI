@@ -54,8 +54,11 @@ Module.register("MMM-neoomAPI", {
             method: 'GET',
             headers: {accept: 'application/json', authorization: `Bearer ${this.config.apiKey}`,},
         }).then(response => {
-            this.errorText = response.status;
-        }).catch(error => {
+            return response.json();
+        }).then(data => {
+            this.errorText = data.power_production.value;
+        })
+            .catch(error => {
             this.errorText = error;
         });
 
