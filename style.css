@@ -1,11 +1,6 @@
-.fadeInJoke {
+.fadeInText {
     animation-name: fadeIn;
     animation-duration: 1s;
-    animation-fill-mode: both;
-}
-.fadeInPunchline {
-    animation-name: fadeIn;
-    animation-duration: 7s;
     animation-fill-mode: both;
 }
 @keyframes fadeIn {
