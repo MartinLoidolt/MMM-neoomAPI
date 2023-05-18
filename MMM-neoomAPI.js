@@ -41,18 +41,23 @@ Module.register("MMM-neoomAPI", {
     setupHTMLStructure(wrapper) {
 
         const headerText = document.createElement("h1");
-        headerText.innerHTML = "Photovoltaic Stats";
+        headerText.innerHTML = "Photovoltaic Statistics";
         wrapper.appendChild(headerText);
 
-        const statsText = document.createElement("h2");
-        statsText.className = "bright medium light"
+        const powerProductionText = document.createElement("span");
+        powerProductionText.className = "bright medium light fadeInText";
+        powerProductionText.innerHTML = `Power Production: ${this.stats.power_production.value / 1000} kW`;
+        wrapper.appendChild(powerProductionText);
 
-        statsText.innerHTML = `Power Production: ${this.stats.power_production.value / 1000} kW \n`;
-        statsText.innerHTML += `Power Consumption: ${this.stats.power_consumption_calc.value / 1000} kW`;
-        statsText.innerHTML += `Storage charge: ${this.stats.state_of_charge.value} %`;
+        const powerConsumptionText = document.createElement("span");
+        powerConsumptionText.className = "bright medium light fadeInText";
+        powerConsumptionText.innerHTML = `Power Consumption: ${this.stats.power_consumption_calc.value / 1000} kW`;
+        wrapper.appendChild(powerConsumptionText);
 
-        wrapper.appendChild(statsText);
-
+        const storageStateText = document.createElement("span");
+        storageStateText.className = "bright medium light fadeInText";
+        storageStateText.innerHTML = `Storage charge: ${this.stats.state_of_charge.value} %`;
+        wrapper.appendChild(storageStateText);
     },
     getStats() {
 
