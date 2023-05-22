@@ -53,7 +53,7 @@ Module.register("MMM-neoomAPI", {
 
         const powerConsumptionText = document.createElement("span");
         powerConsumptionText.className = "bright medium light fadeInText";
-        powerConsumptionText.innerHTML = `Power Consumption: ${this.stats.power_consumption_calc.value / 1000} kW`;
+        powerConsumptionText.innerHTML = `Power Consumption: ${(this.stats.power_consumption_calc.value / 1000).toFixed(2)} kW`;
         wrapper.appendChild(powerConsumptionText);
 
         wrapper.appendChild(document.createElement("br"));
