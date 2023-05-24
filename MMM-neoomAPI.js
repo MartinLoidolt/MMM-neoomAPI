@@ -108,10 +108,10 @@ Module.register("MMM-neoomAPI", {
         }
 
         if(wattAmount >= 1000) {
-            return (wattAmount / 1000).toFixed(2) + " kW";
+            return (wattAmount / 1000).toFixed(2) + ' kW';
         }
 
-        return wattAmount.toFixed(0) + "   W"
+        return wattAmount.toFixed(0) + '   W';
     },
     getFormattedPercent(percentAmount) {
         if(percentAmount == null) {
@@ -119,13 +119,13 @@ Module.register("MMM-neoomAPI", {
         }
 
         if(percentAmount < 10) {
-            return "   " + percentAmount.toFixed(0) + "  %";
+            return "   " + percentAmount.toFixed(0) + '  %';
         }
 
         if(percentAmount < 100) {
-            return "  " + percentAmount.toFixed(0) + "  %";
+            return "  " + percentAmount.toFixed(0) + '  %';
         }
 
-        return " " + percentAmount.toFixed(0) + "  %";
+        return " " + percentAmount.toFixed(0) + '  %';
     }
 });
