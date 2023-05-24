@@ -10,7 +10,10 @@ Module.register("MMM-neoomAPI", {
         fetchInterval: 10 * 1000
     },
     getStyles() {
+
         this.file('style.css');
+
+        return [];
     },
     stats: null,
     errorText: null,
