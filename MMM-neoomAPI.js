@@ -99,7 +99,7 @@ Module.register("MMM-neoomAPI", {
     },
     getFormattedWatt(wattAmount) {
         if(wattAmount >= 1000) {
-            return wattAmount.toFixed(2) + " kW";
+            return (wattAmount / 1000).toFixed(2) + " kW";
         }
 
         return wattAmount.toFixed(0) + " W"
