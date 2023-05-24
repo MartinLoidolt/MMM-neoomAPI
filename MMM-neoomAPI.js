@@ -6,10 +6,7 @@ Module.register("MMM-neoomAPI", {
         shownStats: [
             "power_production",
             "power_consumption_calc",
-            "power_consumption",
-            "power_storage",
-            "power_grid",
-            "power_charging_stations"
+            "power_consumption"
         ],
         fetchInterval: 10 * 1000
     },
