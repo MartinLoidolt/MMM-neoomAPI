@@ -3,6 +3,11 @@
     animation-duration: 1s;
     animation-fill-mode: both;
 }
+
+.monospaced {
+    font-family: Monospaced, monospace;
+}
+
 @keyframes fadeIn {
     0% {opacity: 0;}
     100% {opacity: 1;}

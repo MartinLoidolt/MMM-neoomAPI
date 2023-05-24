@@ -74,7 +74,7 @@ Module.register("MMM-neoomAPI", {
     getElementFromStatName(name) {
 
         let newElement = document.createElement("span");
-        newElement.className = "bright medium light";
+        newElement.className = "bright medium light monospaced";
         newElement.innerHTML = "NAME NOT FOUND";
 
         if(name === "power_consumption") {
@@ -108,16 +108,24 @@ Module.register("MMM-neoomAPI", {
         }
 
         if(wattAmount >= 1000) {
-            return (wattAmount / 1000).toFixed(2).padStart(8) + "kW".padStart(4);
+            return (wattAmount / 1000).toFixed(2) + " kW";
         }
 
-        return wattAmount.toFixed(0).padStart(8) + "W".padStart(4);
+        return wattAmount.toFixed(0) + "   W"
     },
     getFormattedPercent(percentAmount) {
         if(percentAmount == null) {
             return "null";
         }
 
-        return percentAmount.toFixed(0) + "%".padStart(4);
+        if(percentAmount < 10) {
+            return "   " + percentAmount.toFixed(0) + "  %";
+        }
+
+        if(percentAmount < 100) {
+            return "  " + percentAmount.toFixed(0) + "  %";
+        }
+
+        return " " + percentAmount.toFixed(0) + "  %";
     }
 });
