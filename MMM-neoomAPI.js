@@ -10,13 +10,11 @@ Module.register("MMM-neoomAPI", {
         fetchInterval: 10 * 1000
     },
     getStyles() {
-        return [
-            this.file('style.css')
-        ]
+        this.file('style.css');
     },
     stats: null,
     errorText: null,
-    notificationReceived(notification, payload, sender) {
+    notificationReceived(notification) {
         if (notification === 'MODULE_DOM_CREATED') {
             this.getStats();
             setInterval(() => {
