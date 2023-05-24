@@ -94,9 +94,9 @@ Module.register("MMM-neoomAPI", {
         } else if(name === "power_appliances") {
             newElement.innerHTML = `Power Appliances: ${this.getFormattedWatt(this.stats.power_appliances.value)}`;
         } else if(name === "state_of_charge") {
-            newElement.innerHTML = `Storage Charge: ${this.stats.state_of_charge.value + " %"}`;
+            newElement.innerHTML = `Storage Charge: ${this.getFormattedPercent(this.stats.state_of_charge.value)}`;
         } else if(name === "self_sufficiency") {
-            newElement.innerHTML = `Self Sufficiency: ${this.stats.self_sufficiency.value + " %"}`;
+            newElement.innerHTML = `Self Sufficiency: ${this.getFormattedPercent(this.stats.self_sufficiency.value)}`;
         }
 
         return newElement;
@@ -112,5 +112,12 @@ Module.register("MMM-neoomAPI", {
         }
 
         return wattAmount.toFixed(0) + " W"
+    },
+    getFormattedPercent(percentAmount) {
+        if(percentAmount == null) {
+            return "null";
+        }
+
+        return percentAmount.toFixed(0) + " %";
     }
 });
