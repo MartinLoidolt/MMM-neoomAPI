@@ -14,7 +14,7 @@ You can get following information:
 ## Installation
 1. Navigate into your MagicMirror modules folder
 2. Execute: `git clone https://github.com/MartinLoidolt/MMM-neoomAPI.git`
-3. 
+
 ## Configuration
 Get your API Key and Site-ID from the neoom website:
 
