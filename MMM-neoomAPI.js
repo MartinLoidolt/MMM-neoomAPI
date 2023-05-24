@@ -5,8 +5,7 @@ Module.register("MMM-neoomAPI", {
         siteId: "",
         shownStats: [
             "power_production",
-            "power_consumption_calc",
-            "power_consumption"
+            "power_consumption_calc"
         ],
         fetchInterval: 10 * 1000
     },
