@@ -3,6 +3,10 @@ Module.register("MMM-neoomAPI", {
     defaults: {
         apiKey: "",
         siteId: "",
+        shownStats: [
+            "power_production",
+            "power_consumption_calc"
+        ],
         fetchInterval: 10 * 1000
     },
     getStyles() {
@@ -39,32 +43,16 @@ Module.register("MMM-neoomAPI", {
         return wrapper;
     },
     setupHTMLStructure(wrapper) {
-
         const headerText = document.createElement("h1");
         headerText.innerHTML = "Photovoltaic Statistics";
         wrapper.appendChild(headerText);
 
-        const powerProductionText = document.createElement("span");
-        powerProductionText.className = "bright medium light fadeInText";
-        powerProductionText.innerHTML = `Power Production: ${this.stats.power_production.value / 1000} kW`;
-        wrapper.appendChild(powerProductionText);
-
-        wrapper.appendChild(document.createElement("br"));
-
-        const powerConsumptionText = document.createElement("span");
-        powerConsumptionText.className = "bright medium light fadeInText";
-        powerConsumptionText.innerHTML = `Power Consumption: ${this.stats.power_consumption_calc.value / 1000} kW`;
-        wrapper.appendChild(powerConsumptionText);
-
-        wrapper.appendChild(document.createElement("br"));
-
-        const storageStateText = document.createElement("span");
-        storageStateText.className = "bright medium light fadeInText";
-        storageStateText.innerHTML = `Storage charge: ${this.stats.state_of_charge.value} %`;
-        wrapper.appendChild(storageStateText);
+        this.config.shownStats.forEach(statName => {
+            wrapper.appendChild(document.createElement("br"));
+            wrapper.appendChild(this.getElementFromStatName(statName));
+        });
     },
     getStats() {
-
         fetch(`https://try.readme.io/https://api.ntuity.io/v1/sites/${this.config.siteId}/energy-flow/latest`, {
             method: 'GET',
             headers: {accept: 'application/json', authorization: `Bearer ${this.config.apiKey}`,},
@@ -78,5 +66,42 @@ Module.register("MMM-neoomAPI", {
         });
 
         this.updateDom();
+    },
+    getElementFromStatName(name) {
+
+        let newElement = document.createElement("span");
+        newElement.className = "bright medium light";
+        newElement.innerHTML = "NAME NOT FOUND";
+
+        if(name === "power_consumption") {
+            newElement.innerHTML = `Power Consumption (not calc): ${this.getFormattedWatt(this.stats.power_consumption.value)}`;
+        } else if(name === "power_consumption_calc") {
+            newElement.innerHTML = `Power Consumption: ${this.getFormattedWatt(this.stats.power_consumption_calc.value)}`;
+        } else if(name === "power_production") {
+            newElement.innerHTML = `Power Production: ${this.getFormattedWatt(this.stats.power_production.value)}`;
+        } else if(name === "power_storage") {
+            newElement.innerHTML = `Power Storage: ${this.getFormattedWatt(this.stats.power_storage.value)}`;
+        } else if(name === "power_grid") {
+            newElement.innerHTML = `Power From Grid: ${this.getFormattedWatt(this.stats.power_grid.value)}`;
+        } else if(name === "power_charging_stations") {
+            newElement.innerHTML = `Power Charging Stations: ${this.getFormattedWatt(this.stats.power_charging_stations.value)}`;
+        } else if(name === "power_heating") {
+            newElement.innerHTML = `Power Heating: ${this.getFormattedWatt(this.stats.power_heating.value)}`;
+        } else if(name === "power_appliances") {
+            newElement.innerHTML = `Power Appliances: ${this.getFormattedWatt(this.stats.power_appliances.value)}`;
+        } else if(name === "state_of_charge") {
+            newElement.innerHTML = `Storage Charge: ${this.stats.state_of_charge.value + " %"}`;
+        } else if(name === "self_sufficiency") {
+            newElement.innerHTML = `Self Sufficiency: ${this.stats.self_sufficiency.value + " %"}`;
+        }
+
+        return newElement;
+    },
+    getFormattedWatt(wattAmount) {
+        if(wattAmount >= 1000) {
+            return wattAmount.toFixed(2) + " kW";
+        }
+
+        return wattAmount.toFixed(0) + " W"
     }
 });
