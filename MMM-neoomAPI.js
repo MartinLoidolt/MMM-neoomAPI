@@ -9,14 +9,15 @@ Module.register("MMM-neoomAPI", {
         ],
         fetchInterval: 10 * 1000
     },
+
     getStyles() {
-
         this.file('style.css');
-
         return [];
     },
+
     stats: null,
     errorText: null,
+
     notificationReceived(notification) {
         if (notification === 'MODULE_DOM_CREATED') {
             this.getStats();
@@ -25,6 +26,7 @@ Module.register("MMM-neoomAPI", {
             }, this.config.fetchInterval);
         }
     },
+
     getDom() {
         const wrapper = document.createElement("div");
 
@@ -43,6 +45,7 @@ Module.register("MMM-neoomAPI", {
 
         return wrapper;
     },
+
     setupHTMLStructure(wrapper) {
         const headerText = document.createElement("h1");
         headerText.innerHTML = "Photovoltaic Statistics";
@@ -57,6 +60,7 @@ Module.register("MMM-neoomAPI", {
 
         });
     },
+
     getStats() {
         fetch(`https://try.readme.io/https://api.ntuity.io/v1/sites/${this.config.siteId}/energy-flow/latest`, {
             method: 'GET',
@@ -72,6 +76,7 @@ Module.register("MMM-neoomAPI", {
 
         this.updateDom();
     },
+
     getElementFromStatName(name) {
 
         let newElement = document.createElement("span");
@@ -102,6 +107,7 @@ Module.register("MMM-neoomAPI", {
 
         return newElement;
     },
+
     getFormattedWatt(wattAmount) {
 
         if(wattAmount == null) {
@@ -114,6 +120,7 @@ Module.register("MMM-neoomAPI", {
 
         return wattAmount.toFixed(0) + " W"
     },
+
     getFormattedPercent(percentAmount) {
         if(percentAmount == null) {
             return "null";
