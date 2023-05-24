@@ -108,16 +108,16 @@ Module.register("MMM-neoomAPI", {
         }
 
         if(wattAmount >= 1000) {
-            return (wattAmount / 1000).toFixed(2) + " kW";
+            return (wattAmount / 1000).toFixed(2).padStart(8, " ") + "kW".padStart(4, " ");
         }
 
-        return wattAmount.toFixed(0) + " W"
+        return wattAmount.toFixed(0).padStart(8, " ") + "W".padStart(4, " ");
     },
     getFormattedPercent(percentAmount) {
         if(percentAmount == null) {
             return "null";
         }
 
-        return percentAmount.toFixed(0) + " %";
+        return percentAmount.toFixed(0) + "%".padStart(4, " ");
     }
 });
