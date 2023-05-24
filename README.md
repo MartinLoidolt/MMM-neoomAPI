@@ -18,7 +18,7 @@ You can get following information:
 ## Configuration
 Get your API Key and Site-ID from the neoom website:
 
-![API Key](https://github.com/MartinLoidolt/MMM-neoomAPI/resources/ApiKey.jpg?raw=true)
+![API Key](https://github.com/MartinLoidolt/MMM-neoomAPI/blob/master/resources/ApiKey.jpg?raw=true)
 
 ### Parameters
 | Option        | Configuration                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -29,4 +29,4 @@ Get your API Key and Site-ID from the neoom website:
 | shownStats    | Array of the statistics you want to show. <br/> For more information go to: https://docs.ntuity.io/reference/get_sites-id-energy-flow-latest <br/><br/> You can add the following ones: <ul><li>power_consumption</li><li>power_consumption_calc</li><li>power_production</li><li>power_storage</li><li>power_grid</li><li>power_charging_stations</li><li>power_heating</li><li>power_appliances</li><li>state_of_charge</li><li>self_sufficiency</li></ul> <br/><br/> Type: `Array of Strings` <br/> Default: `["power_production", "power_consumption_calc"]` |
 
 ## Example
-![Example](https://github.com/MartinLoidolt/MMM-neoomAPI/resources/Example.jpg?raw=true)
+![Example](https://github.com/MartinLoidolt/MMM-neoomAPI/blob/master/resources/Example.jpg?raw=true)
