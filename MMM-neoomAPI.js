@@ -71,9 +71,9 @@ Module.register("MMM-neoomAPI", {
         }).then(response => {
             return response.json();
         }).then(data => {
+            this.errorText = null;
             this.stats = data;
-        })
-            .catch(error => {
+        }).catch(error => {
             this.errorText = error;
         });
 
