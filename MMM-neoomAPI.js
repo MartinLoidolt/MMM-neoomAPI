@@ -47,9 +47,13 @@ Module.register("MMM-neoomAPI", {
         headerText.innerHTML = "Photovoltaic Statistics";
         wrapper.appendChild(headerText);
 
-        this.config.shownStats.forEach(statName => {
-            wrapper.appendChild(document.createElement("br"));
+        this.config.shownStats.forEach((statName, index) => {
             wrapper.appendChild(this.getElementFromStatName(statName));
+
+            if(index <= this.config.shownStats.length - 1) {
+                wrapper.appendChild(document.createElement("br"));
+            }
+
         });
     },
     getStats() {
