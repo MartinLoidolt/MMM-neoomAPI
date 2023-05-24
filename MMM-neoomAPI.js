@@ -5,7 +5,16 @@ Module.register("MMM-neoomAPI", {
         siteId: "",
         shownStats: [
             "power_production",
-            "power_consumption_calc"
+            "power_consumption_calc",
+            "power_consumption",
+            "power_storage",
+            "power_grid",
+            "power_charging_stations",
+            "power_heating",
+            "power_appliances",
+            "state_of_charge",
+            "self_sufficiency"
+
         ],
         fetchInterval: 10 * 1000
     },
@@ -102,6 +111,11 @@ Module.register("MMM-neoomAPI", {
         return newElement;
     },
     getFormattedWatt(wattAmount) {
+
+        if(wattAmount == null) {
+            return "null";
+        }
+
         if(wattAmount >= 1000) {
             return (wattAmount / 1000).toFixed(2) + " kW";
         }
